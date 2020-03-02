@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  </head>
+  <body >
+    <div align='center'>
+    <div style="border-style: solid; width: 900px; border-radius: 25px;">
+      <div>
+        <header
+          align="center"
+          class="p-1"
+          style="background-color: #e6e5e5; height: 2.5rem; border-radius: 25px;"
+        >
+          Question 1
+        </header>
+      </div>
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-6 mt-4">
+
+            <p>Given points (x1,y1) and (x2,y2) select the formula to find the equation of the given line. </p>
+
+            <div class="col-12 mt-5">
+            <div class="mt-4 d-flex justify-content-between">
+                <div>
+                <input type="radio" id='first' name='math1'value='first'>
+                <label for='first'>
+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                       <mrow>
+                           <mi>y</mi>
+
+                       </mrow>
+                        <mo>=</mo>
+                       <mrow>
+                           <mn>m</mn>
+                           <mi>x</mi>
+                           <mo>+</mo>
+                           <mn>c</mn>
+                       </mrow>
+                    </math>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id='second'name='math1' value='second'>
+                <label for='first'>
+
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>
+                        <mo>(</mo>
+                            <mi>
+                               
+                                <mi>x</mi>
+                                <mo>-</mo>
+                                <mn>h</mn>
+                           
+                            </mi>
+                        <mo>)</mo>
+                    </mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <msup>
+                        <mi>
+                    <mo>(</mo>
+                        <mi>
+                           
+                            <mi>y</mi>
+                            <mo>-</mo>
+                            <mn>k</mn>
+                       
+                        </mi>
+                    <mo>)</mo>
+                </mi>
+                    <mn>2</mn>
+                </msup>
+                    </math>
+
+
+                </label>
+            </div>
+            </div>
+            <div class="mt-5 d-flex justify-content-between">
+                <div>
+                <input type="radio" id='third' name='math1' value='third'>
+                <label for='first'>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    
+                        <mrow>
+                            <mi>y</mi>
+                            <mo>-</mo>
+                            <mn>y1</mn>
+
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mi>m</mi>
+                            <mo>(</mo>
+                            <mi>x</mi>
+                            <mo>-</mo>
+                            <mn>x1</mn>
+                            <mo>)</mo>
+                        </mrow>
+
+                    </math>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id='fourth' name='math1' value='fourth'>
+                <label for='first'>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    
+                        <mrow>
+                            <mi>y</mi>
+                            <mo>-</mo>
+                            <mn>y2</mn>
+
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mfrac>
+                                <mi>
+                                    <mi>y2</mi>
+                                    <mo>-</mo>
+                                    <mi>y1</mi>
+                                </mi>
+                                <mi>
+                                    <mi>x2</mi>
+                                    <mo>-</mo>
+                                    <mi>x1</mi>
+                                </mi>
+                            </mfrac>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                    <mo>-</mo>
+                                    <mi>x2</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                        </math>
+                </label>
+            </div>
+            </div>
+        </div>
+<div class="m-2">
+  <span>  <button class="btn btn-outline-secondary mr-2" style="font-size: 13px;" onclick="submitSelection()"> Submit & next question</button> </span>
+  <span> <button class="btn btn-outline-secondary" style="font-size: 13px;" onclick="resetSelection()"> Cancel & clear question</button></span>
+</div>
+
+
+          </div>
+          <div class="col-3 ml-1">
+
+            <img src="line.JPG">
+
+          </div>
+        </div>      
+       
+</div>
+    </body>
+  <script>
+      var correct=0;
+      var questionanswered=0;
+      resetSelection=()=>{
+        document.querySelector('input[name = "math1"]:checked').checked = false;
+       // alert(document.querySelector('input[name = "math1"]:checked').value+"alert")
+      }
+      submitSelection=()=>{
+      var answer= document.querySelector('input[name = "math1"]:checked').value;
+      if(answer)
+      {
+        questionanswered=questionanswered+1;
+      }
+      if(answer=='fourth')
+      {
+          correct= 1;
+         
+      }
+      sessionStorage.setItem('mathcorrect',correct)
+      sessionStorage.setItem('mathquestionanswered',questionanswered)
+      window.location='Cosine.html'
+      }
+  </script>
+</html>

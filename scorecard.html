@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div align="center">
+      <div style="border-style: solid; width: 900px; border-radius: 25px;">
+        <div>
+          <header
+            align="center"
+            class="p-1"
+            style="background-color: #e6e5e5; height: 2.5rem; border-radius: 25px;"
+          >
+            Score Card
+          </header>
+        </div>
+        <div class="container">
+          <div align="left">
+            <div>
+              <div class="col-12 m-4">
+                <section>
+                  <details>
+                    <summary>Quantitave Section</summary>
+                    <p>
+                      <b>Number of Questions Answered</b>:
+                      <label id="noOfQuantQuestionsAnswered"></label>
+                    </p>
+                    <p>
+                      <b>Number of Correct Answers</b>:
+                      <label id="noOfQuantCorrectAnswers"></label>
+                    </p>
+                    <p>
+                      <b>Score</b>: <label id="quantScore"></label
+                      ><label>%</label>
+                    </p>
+                  </details>
+                </section>
+                <section>
+                  <details>
+                    <summary>Reading Section</summary>
+                    <p>
+                      <b>Number of Questions Answered</b>:
+                      <label id="noOfEnglishQuestionsAnswered"></label>
+                    </p>
+                    <p>
+                      <b>Number of Correct Answers</b>:
+                      <label id="noOfEnglishCorrectAnswers"></label>
+                    </p>
+                    <p>
+                      <b>Score</b>: <label id="englishScore"></label
+                      ><label>%</label>
+                    </p>
+                  </details>
+                </section>
+                <section>
+                  <details>
+                    <summary>Audio/Video Section</summary>
+                    <p>
+                      <b>Number of Questions Answered</b>:
+                      <label id="noOfVideoQuestionsAnswered"></label>
+                    </p>
+                    <p>
+                      <b>Number of Correct Answers</b>:
+                      <label id="noOfVideoCorrectAnswers"></label>
+                    </p>
+                    <p>
+                      <b>Score</b>: <label id="videoScore"></label
+                      ><label>%</label>
+                    </p>
+                  </details>
+                </section>
+                <div align="center" class="mt-3">
+                  <h3>Thank You!!</h3>
+                </div>
+                <div align="center" class="mt-3">
+                  <button
+                  style="font-size: 16px;"
+                    class="btn btn-outline-secondary"
+                    onclick="homePage()"
+                  >Finish</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    window.onload = () => {
+      document.getElementById(
+        "noOfQuantQuestionsAnswered"
+      ).innerHTML = sessionStorage.getItem("mathquestionanswered");
+      document.getElementById(
+        "noOfQuantCorrectAnswers"
+      ).innerHTML = sessionStorage.getItem("mathcorrect");
+      document.getElementById("quantScore").innerHTML =
+        (parseInt(sessionStorage.getItem("mathcorrect"))/2) * 100;
+
+      document.getElementById(
+        "noOfEnglishQuestionsAnswered"
+      ).innerHTML = sessionStorage.getItem("englishquestionanswered");
+      document.getElementById(
+        "noOfEnglishCorrectAnswers"
+      ).innerHTML = sessionStorage.getItem("englishcorrect");
+      document.getElementById("englishScore").innerHTML =
+        (parseInt(sessionStorage.getItem("englishcorrect"))) * 100;
+
+      document.getElementById(
+        "noOfVideoQuestionsAnswered"
+      ).innerHTML = sessionStorage.getItem("videoquestionanswered");
+      document.getElementById(
+        "noOfVideoCorrectAnswers"
+      ).innerHTML = sessionStorage.getItem("videocorrect");
+      document.getElementById("videoScore").innerHTML =
+        (parseInt(sessionStorage.getItem("videocorrect"))) * 100;
+    };
+    homePage=()=>
+    {
+        sessionStorage.removeItem('mathquestionanswered')
+        sessionStorage.removeItem('mathcorrect')
+        sessionStorage.removeItem('englishquestionanswered')
+        sessionStorage.removeItem('englishcorrect')
+        sessionStorage.removeItem('videoquestionanswered')
+        sessionStorage.removeItem('videocorrect')
+
+      window.location = "loginpage.html";
+    }
+  </script>
+</html>

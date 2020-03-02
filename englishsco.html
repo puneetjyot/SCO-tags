@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div align="center">
+      <div style="border-style: solid; width: 900px; border-radius: 25px;">
+        <div>
+          <header
+            align="center"
+            class="p-1"
+            style="background-color: #e6e5e5; height: 2.5rem; border-radius: 25px;"
+          >
+            Question 3
+          </header>
+        </div>
+        <div class="container d-flex justify-content-between">
+          <div align="left">
+            <div class="col-8">
+              <p align="left" class="mt-3" style="font-size: 13px;">
+                As per the latest twitter news, complete the article snippet
+                given by selecting appropriate choices for the blanks.
+              </p>
+
+              <div class="d-flex justify-content-between">
+                <div id="tag1" >
+                  <div>
+                    <input
+                      type="radio"
+                      id="first"
+                      name="english1"
+                      data-value="$650"
+                      value="first"
+                      onclick="fillvalue1(this)"
+                    />
+                    <label for="first">
+                      Option 1 Mark 1:$650
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="second"
+                      name="english1"
+                      data-value="$550"
+                      value="second"
+                      onclick="fillvalue1(this)"
+                    />
+                    <label for="first">
+                      Option 2 Mark 1:$550
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="third"
+                      name="english1"
+                      data-value="$650"
+                      value="third"
+                      onclick="fillvalue1(this)"
+                    />
+                    <label for="first">
+                      Option 3 Mark 1:$650
+                    </label>
+                  </div>
+                </div>
+                <div id="tag2" style="display: none;">
+                  <div>
+                    <input
+                      type="radio"
+                      id="first"
+                      name="english2"
+                      value="first"
+                      data-value="Twitter"
+                      onclick="fillvalue2(this)"
+                    />
+                    <label for="first">
+                      Option 1 Mark 2: Twitter
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="second"
+                      name="english2"
+                      data-value="Google"
+                      value="second"
+                      onclick="fillvalue2(this)"
+                    />
+                    <label for="first">
+                      Option 2 Mark 2: Google
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="third"
+                      name="english2"
+                      data-value="Facebook"
+                      value="third"
+                      onclick="fillvalue2(this)"
+                    />
+                    <label for="first">
+                      Option 3 Mark 2: Facebook
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 mt-2">
+            <div align="left">
+              <blockquote>
+                "Twitter wants more cash. The company announced two
+                <mark
+                  style="background-color: yellow; color:black"
+                  onclick="showMark1()"
+                >
+                  <label id="marks1">$______</label></mark
+                >
+                million debt offerings in a filing today, each with a potential
+                $100 increase provided that the sales are oversubscribed.
+                Assuming full tip, including the $100 million boosters,
+                <mark
+                  style="background-color: yellow; color:black"
+                  onclick="showMark2()"
+                >
+                  <label id="marks2">_____________</label>
+                </mark>
+                will raise up to $1.5 billion with the two offerings."
+                <br /><br />
+                <div>
+                  <cite style="font-size: 10px;">
+                    http://techcrunch.com/2014/09/10/twitter-to-raise-up-to-1-5b-in-debt-offering"></cite
+                  >
+                </div>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="m-2">
+          <span>
+            <button
+              class="btn btn-outline-secondary mr-2"
+              style="font-size: 13px;"
+              onclick="submitSelection()"
+            >
+              Submit & next question
+            </button>
+          </span>
+          <span>
+            <button
+              class="btn btn-outline-secondary"
+              style="font-size: 13px;"
+              onclick="resetSelection()"
+            >
+              Cancel & clear question
+            </button></span
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var mark1 = document.getElementById("tag1");
+    var mark2 = document.getElementById("tag2");
+
+    fillvalue1 = obj => {
+      var value = obj.getAttribute("data-value");
+      document.getElementById("marks1").innerHTML = value;
+    };
+    fillvalue2 = obj => {
+      var value = obj.getAttribute("data-value");
+      document.getElementById("marks2").innerHTML = value;
+    };
+    showMark1 = () => {
+      if (mark1.style.display == "") {
+        mark1.style.display = "none";
+      } else {
+        mark1.style.display = "";
+        mark2.style.display = "none";
+      }
+    };
+
+    showMark2 = () => {
+      if (mark2.style.display == "") {
+        mark2.style.display = "none";
+      } else {
+        mark2.style.display = "";
+        mark1.style.display = "none";
+      }
+    };
+    var correct = 0;
+    var questionanswered = 0;
+    resetSelection = () => {
+      document.querySelector(
+        'input[name = "english1"]:checked'
+      ).checked = false;
+      document.querySelector(
+        'input[name = "english2"]:checked'
+      ).checked = false;
+      document.getElementById("marks1").innerHTML = "";
+      document.getElementById("marks2").innerHTML = "";
+    };
+    submitSelection = () => {
+      var answer1 = document.querySelector('input[name = "english1"]:checked')
+        .value;
+      var answer2 = document.querySelector('input[name = "english2"]:checked')
+        .value;
+
+      if (answer1 || answer2) {
+        questionanswered = questionanswered + 1;
+      }
+
+      if (answer1 == "first" && answer2 == "second") {
+        correct += 1;
+      }
+
+      sessionStorage.setItem("englishcorrect", correct);
+      sessionStorage.setItem("englishquestionanswered", questionanswered);
+      window.location = "videosco.html";
+    };
+  </script>
+</html>
